@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-sm-12 col-14">
+      <!-- Increased column width -->
+      <div class="input-group shadow-sm">
+        <input pInputText
+               type="text"
+               class="form-control"
+               [(ngModel)]="value"
+               (input)="onInput()"
+               placeholder="Enter company" />
+        <button pButton
+                pRipple
+                class="btn btn-warning"
+                type="button"
+                (click)="onSearch()">
+          <i class="pi pi-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-sm-10 col-12 position-relative">
+      <ul class="suggestions-list list-group shadow-sm" *ngIf="suggestions.length > 0 && value">
+        <li class="list-group-item" *ngFor="let suggestion of suggestions" (click)="onSuggestionSelect(suggestion)">
+          {{ suggestion.company.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
